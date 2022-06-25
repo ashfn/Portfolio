@@ -32,9 +32,45 @@ export default function Home() {
           Some <span className="text-b">Projects</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
-            <Project project={{"name":"Peernet", "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).", "tags":["javascript", "nextjs", "P2P"]}}/>
-            <Project project={{"name":"Peernet", "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).", "tags":["javascript", "nextjs", "P2P"]}}/>
-            <Project project={{"name":"Peernet", "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).", "tags":["javascript", "nextjs", "P2P"]}}/>
+            <Project project={
+              {
+                "name":"Peernet",
+                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
+                "tags":["javascript", "nextjs", "P2P"],
+                "github_link":"https://github.com/Authorises/Authorises",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              }}/>
+            <Project project={
+              {
+                "name":"Peernet",
+                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
+                "tags":["javascript", "nextjs", "P2P"],
+                "github_link":"",
+                "demo_link":"https://google.com",
+                "spigot_link":"",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              }}/>
+            <Project project={
+              {
+                "name":"Peernet",
+                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
+                "tags":["javascript", "nextjs", "P2P"],
+                "github_link":"https://github.com/Authorises/Authorises",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              }}/>
           </div>
         </div>
       </div>

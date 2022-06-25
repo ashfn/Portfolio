@@ -14,7 +14,7 @@ const Nav = () => {
     <div className="p-4 grid justify-items-center">
         <div className="btn-group">
             <button className="btn btn-primary text-base-200 shadow-md shadow-base-100/75"><ImHome size={32}/></button>
-            <button onClick={openGithub} class="btn btn-secondary text-base-200 shadow-md shadow-base-100/75"><FaGithub size={32}/></button>
+            <button onClick={openGithub} className="btn btn-secondary text-base-200 shadow-md shadow-base-100/75"><FaGithub size={32}/></button>
             
         </div>
     </div>
