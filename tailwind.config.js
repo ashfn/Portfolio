@@ -30,6 +30,7 @@ module.exports = {
       'g':'#004c99',
       'h':'#003366',
       'i':'#001933',
+      'j':'#37cdbe'
     }
   },
   plugins: [require("daisyui")],

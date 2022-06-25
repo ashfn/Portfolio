@@ -11,7 +11,7 @@ import Button from '@mui/material/Button'
 
 const Project = ({project}) => {
   return (
-    <div className="lg:basis-3/6 text-a bg-h/25 hover:shadow-lg rounded-box p-4">
+    <div className="lg:basis-3/6 text-a bg-h/25 shadow-lg rounded-box p-4">
         <div className="">
             <span className="text-primary text-xl font-bold">{project.name}</span>
             {project.github_link!="" ? 
@@ -35,7 +35,7 @@ const Project = ({project}) => {
             </p>
         </div>
         <div className="mt-2 flex align-middle space-x-4">
-            {project.github_link!="" ? <a className="cursor-default no-underline" href={project.github_link}><span className="cursor-pointer text-secondary hover:text-primary" ><FaGithub size={32}/></span></a> : <div class="tooltip tooltip-primary" data-tip="🔒 This project is closed source and the code can not be viewed."><span className="text-secondary hover:text-primary" ><GiPadlock size={32}/></span></div>}
+            {project.github_link!="" ? <a className="cursor-default no-underline" href={project.github_link}><span className="cursor-pointer text-secondary hover:text-primary" ><FaGithub size={32}/></span></a> : <div class="tooltip tooltip-primary" data-tip="🔒 This project is closed source and the code cannot be viewed."><span className="text-secondary hover:text-primary" ><GiPadlock size={32}/></span></div>}
             {project.demo_link!="" ? <a className="cursor-default no-underline" href={project.demo_link}><Button variant="outlined" color="info">Demo</Button></a> : ""}
             {project.spigot_link!="" ? <a className="cursor-default no-underline" href={project.spigot_link}><Button variant="outlined" color="info">Spigot</Button></a> : ""}
             {project.live_link!="" ? <a className="cursor-default no-underline" href={project.live_link}><Button variant="outlined" color="info">Live</Button></a> : ""}
