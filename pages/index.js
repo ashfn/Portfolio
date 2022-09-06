@@ -5,7 +5,8 @@ import {DiJava, DiPython} from 'react-icons/di'
 
 import Project from '../components/Project'
 
-export default function Home() {
+export default function Home({projects}) {
+  
   return (
     <div>
       <Layout/>
@@ -36,45 +37,9 @@ export default function Home() {
           Some <span className="text-b">Projects</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
-            <Project project={
-              {
-                "name":"Peernet",
-                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
-                "tags":["javascript", "nextjs", "P2P"],
-                "github_link":"https://github.com/Authorises/Authorises",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              }}/>
-            <Project project={
-              {
-                "name":"Peernet",
-                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
-                "tags":["javascript", "nextjs", "P2P"],
-                "github_link":"",
-                "demo_link":"https://google.com",
-                "spigot_link":"",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              }}/>
-            <Project project={
-              {
-                "name":"Peernet",
-                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
-                "tags":["javascript", "nextjs", "P2P"],
-                "github_link":"https://github.com/Authorises/Authorises",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              }}/>
+                  {projects.map((project) => (
+                     <Project project={project}/>
+                  ))}
           </div>
           <br/><br/><br/><br/>
           <div className="mt-4 lg:flex lg:flex-row space-x-4">
@@ -92,4 +57,27 @@ export default function Home() {
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+
+    var projects = [
+                    {
+                "name":"Peernet",
+                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
+                "tags":["javascript", "nextjs", "P2P"],
+                "github_link":"https://github.com/Authorises/Authorises",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              }
+    ]
+    
+  
+    return {
+    props: {projects}, // will be passed to the page component as props
+  }
 }
