@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
 
-import {DiJava, DiPython} from 'react-icons/di'
+import {DiJava, DiPython, DiMongodb} from 'react-icons/di'
 
 import Project from '../components/Project'
 
@@ -48,7 +48,7 @@ export default function Home({projects}) {
               <pre data-prefix="$" className="text-warning"><code>curl api.authorises/skills</code></pre> 
               <pre data-prefix=">" className="text-neutral"><code><DiJava className="inline"/> Java</code></pre>
               <pre data-prefix=">" className="text-neutral"><code><DiPython className="inline"/> Python</code></pre>
-              <pre data-prefix=">" className="text-neutral"><code></code></pre>
+              <pre data-prefix=">" className="text-neutral"><code><DiMongodb className="inline"/> Mongo</code></pre>
               <pre data-prefix="$" className="text-warning"><code><span className="animate-bounce">|</span></code></pre>
             </div>
           </div>
