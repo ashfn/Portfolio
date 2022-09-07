@@ -59,14 +59,14 @@ export default function Home({projects}) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
     var projects = [
                     {
-                "name":"Peernet",
-                "description":"Allows you to communicate with your friends in real time without a server ( Peer to peer ).",
-                "tags":["javascript", "nextjs", "P2P"],
-                "github_link":"https://github.com/Authorises/Authorises",
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
                 "demo_link":"https://google.com",
                 "spigot_link":"https://github.com",
                 "live_link":"https://netflix.com",
@@ -78,6 +78,9 @@ export async function getServerSideProps(context) {
     
   
     return {
-    props: {projects}, // will be passed to the page component as props
+      revalidate: 60,
+      props: {
+        projects
+      }, // will be passed to the page component as props
   }
 }
