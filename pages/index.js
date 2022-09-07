@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
+import Footer from '../components/Footer'
 
 import {DiJava, DiPython, DiMongodb} from 'react-icons/di'
 
