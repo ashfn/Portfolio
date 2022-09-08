@@ -35,7 +35,7 @@ export default function Home({projects}) {
           </div>
           <br/><br/><br/><br/>
           <div className="mb-6 mt-6 text-4xl">
-          some <span className="text-b">projects</span>
+          Some <span className="text-b">projects</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
                   {projects.map((project) => (
@@ -46,7 +46,7 @@ export default function Home({projects}) {
           <div className="mt-4 lg:flex lg:flex-row space-x-4">
             <span className="basis-1/2">
             <div className="mb-6 mt-6 text-4xl">
-          my <span className="text-b">skills</span>
+          My <span className="text-b">skills</span>
           </div>
             </span>
             <div data-theme="term" className="lg:basis-1/2 mockup-code text-a bg-h/25 text-l lg:text-xl font-mono shadow-lg">
