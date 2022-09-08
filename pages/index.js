@@ -35,7 +35,7 @@ export default function Home({projects}) {
           </div>
           <br/><br/><br/><br/>
           <div className="mb-6 mt-6 text-4xl">
-          Some <span className="text-b">Projects</span>
+          some <span className="text-b">projects</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
                   {projects.map((project) => (
@@ -44,7 +44,11 @@ export default function Home({projects}) {
           </div>
           <br/><br/><br/><br/>
           <div className="mt-4 lg:flex lg:flex-row space-x-4">
-            <span className="basis-1/2"></span>
+            <span className="basis-1/2">
+            <div className="mb-6 mt-6 text-4xl">
+          my <span className="text-b">skills</span>
+          </div>
+            </span>
             <div data-theme="term" className="lg:basis-1/2 mockup-code text-a bg-h/25 text-l lg:text-xl font-mono shadow-lg">
               <pre data-prefix="$" className="text-warning"><code>curl api.authorises/skills</code></pre> 
               <pre data-prefix=">" className="text-neutral"><code><DiJava className="inline"/> Java</code></pre>
@@ -55,7 +59,8 @@ export default function Home({projects}) {
           </div>
         </div>
       </div>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <Footer/>
     </div>
   )
 }
@@ -64,6 +69,66 @@ export async function getStaticProps(context) {
 
     var projects = [
                     {
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              },
+              {
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              },
+              {
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              },
+              {
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              },
+              {
+                "name":"Odin",
+                "description":"A tool to manage and update multiple instances.",
+                "tags":["Java", "Socket.io", "Client/Server"],
+                "github_link":"https://github.com/Authorises/Odin",
+                "demo_link":"https://google.com",
+                "spigot_link":"https://github.com",
+                "live_link":"https://netflix.com",
+                "stars":2500,
+                "commits":2383,
+                "forks":78
+              },
+              {
                 "name":"Odin",
                 "description":"A tool to manage and update multiple instances.",
                 "tags":["Java", "Socket.io", "Client/Server"],
