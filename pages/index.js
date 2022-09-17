@@ -39,7 +39,7 @@ export default function Home({projects}) {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
                   {projects.map((project) => (
-                     <Project project={project}/>
+                     <Project project={project} key={Math.random()}/>
                   ))}
           </div>
           <br/><br/><br/><br/>
@@ -72,79 +72,45 @@ export async function getStaticProps(context) {
                 "name":"Odin",
                 "description":"A tool to manage and update multiple instances.",
                 "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
+                "github_link":"Authorises/Portfolio",
                 "demo_link":"https://google.com",
                 "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
+                "live_link":"https://netflix.com"
               },
               {
                 "name":"Odin",
                 "description":"A tool to manage and update multiple instances.",
                 "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
+                "github_link":"",
                 "demo_link":"https://google.com",
                 "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              },
-              {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              },
-              {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              },
-              {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
-              },
-              {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"https://github.com/Authorises/Odin",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com",
-                "stars":2500,
-                "commits":2383,
-                "forks":78
+                "live_link":"https://netflix.com"
               }
     ]
+
+    for (var i = 0; i < projects.length; i++) {
+      var d = projects[i]
+      console.log(d)
+      if(d.github_link!=""){
+        fetch('http://api.github.com/repos/'+d.github_link)
+        .then((r) => r.json())
+        .then((r) => {
+          d.stars = r.stargazers_count
+          d.forks = r.forks
+          fetch('http://api.github.com/repos/'+d.github_link+'/commits')
+          .then((r2 => r2.json()))
+          .then(r2 => {
+            console.log(r2)
+            d.commits = r2.size
+          })
+          //console.log(d)
+        })
+      }
+    }
     
   
     return {
-      revalidate: 60,
+      revalidate: 300,
       props: {
         projects
       }, // will be passed to the page component as props
