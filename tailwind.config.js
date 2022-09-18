@@ -48,7 +48,6 @@ module.exports = {
           "base-300": "#004c99",
           "test": "001933"
         }
-
       },
       "dark",
       "cupcake",

@@ -67,52 +67,13 @@ export default function Home({projects}) {
 
 export async function getStaticProps(context) {
 
-    var projects = [
-                    {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"Authorises/Portfolio",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com"
-              },
-              {
-                "name":"Odin",
-                "description":"A tool to manage and update multiple instances.",
-                "tags":["Java", "Socket.io", "Client/Server"],
-                "github_link":"",
-                "demo_link":"https://google.com",
-                "spigot_link":"https://github.com",
-                "live_link":"https://netflix.com"
-              }
-    ]
-
-    for (var i = 0; i < projects.length; i++) {
-      var d = projects[i]
-      console.log(d)
-      if(d.github_link!=""){
-        fetch('http://api.github.com/repos/'+d.github_link)
-        .then((r) => r.json())
-        .then((r) => {
-          d.stars = r.stargazers_count
-          d.forks = r.forks
-          fetch('http://api.github.com/repos/'+d.github_link+'/commits')
-          .then((r2 => r2.json()))
-          .then(r2 => {
-            console.log(r2)
-            d.commits = r2.size
-          })
-          //console.log(d)
-        })
-      }
-    }
+    var p = await fetch('https://raw.githubusercontent.com/Authorises/data/main/projects');
+    const projects = await p.json()
     
-  
-    return {
-      revalidate: 300,
-      props: {
-        projects
-      }, // will be passed to the page component as props
-  }
+      return {
+        revalidate: 300,
+        props: {
+          projects
+        },
+      }
 }

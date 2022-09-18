@@ -15,15 +15,6 @@ const Project = ({project}) => {
     <div className="lg:basis-3/6 text-a bg-h/25 shadow-lg rounded-box p-4">
         <div className="">
             <span className="text-primary text-xl font-bold">{project.name}</span>
-            {project.github_link!="" ? 
-                <span>
-                    <span className="float-right mr-2 lg:mr-4"><AiOutlineStar className="inline"/>{project.stars}</span>
-                    <span className="float-right mr-2 lg:mr-4"><TbGitFork className="inline"/>{project.forks}</span>
-                    <span className="float-right mr-2 lg:mr-4"><GoGitCommit className="inline"/>{project.commits}</span>
-                </span>
-                        
-            : ""}
-
         </div>
         <div className="flex space-x-2 mt-2">
         {project.tags.map(function(name, index){
