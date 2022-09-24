@@ -24,9 +24,9 @@ export default function Home({projects}) {
             <div data-theme="term" className="lg:basis-3/6 mockup-code text-a bg-h/25 text-l lg:text-xl font-mono shadow-lg">
               <pre data-prefix="$" className="text-warning"><code>java -jar Authorises.jar</code></pre> 
               <pre data-prefix=">" className="text-neutral"><code>Age: 14</code></pre>
-              <pre data-prefix=">" className="text-neutral"><code>Country: 🇬🇧</code></pre>
-              <pre data-prefix=">" className="text-neutral"><code>💙 Food: 🍣</code></pre>
-              <pre data-prefix=">" className="text-neutral"><code>💙 Lang: ☕</code></pre>
+              <pre data-prefix=">" className="text-neutral"><code>Country: UK</code></pre>
+              <pre data-prefix=">" className="text-neutral"><code>💙 Food: SUSHI</code></pre>
+              <pre data-prefix=">" className="text-neutral"><code>💙 Lang: JAVA</code></pre>
               <pre data-prefix="$" className="text-warning"><code><span className="animate-bounce">|</span></code></pre>
             </div>
             <div className="invisible lg:visible lg:basis-3/6 m-auto">
