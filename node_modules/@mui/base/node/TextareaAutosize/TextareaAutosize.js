@@ -15,6 +15,8 @@ var React = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _reactDom = require("react-dom");
+
 var _utils = require("@mui/utils");
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -44,6 +46,11 @@ const styles = {
     transform: 'translateZ(0)'
   }
 };
+
+function isEmpty(obj) {
+  return obj === undefined || obj === null || Object.keys(obj).length === 0;
+}
+
 const TextareaAutosize = /*#__PURE__*/React.forwardRef(function TextareaAutosize(props, ref) {
   const {
     onChange,
@@ -61,13 +68,13 @@ const TextareaAutosize = /*#__PURE__*/React.forwardRef(function TextareaAutosize
   const shadowRef = React.useRef(null);
   const renders = React.useRef(0);
   const [state, setState] = React.useState({});
-  const syncHeight = React.useCallback(() => {
+  const getUpdatedState = React.useCallback(() => {
     const input = inputRef.current;
     const containerWindow = (0, _utils.unstable_ownerWindow)(input);
     const computedStyle = containerWindow.getComputedStyle(input); // If input's width is shrunk and it's not visible, don't sync height.
 
     if (computedStyle.width === '0px') {
-      return;
+      return {};
     }
 
     const inputShallow = shadowRef.current;
@@ -104,30 +111,77 @@ const TextareaAutosize = /*#__PURE__*/React.forwardRef(function TextareaAutosize
 
     const outerHeightStyle = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
     const overflow = Math.abs(outerHeight - innerHeight) <= 1;
-    setState(prevState => {
-      // Need a large enough difference to update the height.
-      // This prevents infinite rendering loop.
-      if (renders.current < 20 && (outerHeightStyle > 0 && Math.abs((prevState.outerHeightStyle || 0) - outerHeightStyle) > 1 || prevState.overflow !== overflow)) {
-        renders.current += 1;
-        return {
-          overflow,
-          outerHeightStyle
-        };
-      }
-
-      if (process.env.NODE_ENV !== 'production') {
-        if (renders.current === 20) {
-          console.error(['MUI: Too many re-renders. The layout is unstable.', 'TextareaAutosize limits the number of renders to prevent an infinite loop.'].join('\n'));
-        }
-      }
-
-      return prevState;
-    });
+    return {
+      outerHeightStyle,
+      overflow
+    };
   }, [maxRows, minRows, props.placeholder]);
+
+  const updateState = (prevState, newState) => {
+    const {
+      outerHeightStyle,
+      overflow
+    } = newState; // Need a large enough difference to update the height.
+    // This prevents infinite rendering loop.
+
+    if (renders.current < 20 && (outerHeightStyle > 0 && Math.abs((prevState.outerHeightStyle || 0) - outerHeightStyle) > 1 || prevState.overflow !== overflow)) {
+      renders.current += 1;
+      return {
+        overflow,
+        outerHeightStyle
+      };
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (renders.current === 20) {
+        console.error(['MUI: Too many re-renders. The layout is unstable.', 'TextareaAutosize limits the number of renders to prevent an infinite loop.'].join('\n'));
+      }
+    }
+
+    return prevState;
+  };
+
+  const syncHeight = React.useCallback(() => {
+    const newState = getUpdatedState();
+
+    if (isEmpty(newState)) {
+      return;
+    }
+
+    setState(prevState => {
+      return updateState(prevState, newState);
+    });
+  }, [getUpdatedState]);
+
+  const syncHeightWithFlushSycn = () => {
+    const newState = getUpdatedState();
+
+    if (isEmpty(newState)) {
+      return;
+    } // In React 18, state updates in a ResizeObserver's callback are happening after the paint which causes flickering
+    // when doing some visual updates in it. Using flushSync ensures that the dom will be painted after the states updates happen
+    // Related issue - https://github.com/facebook/react/issues/24331
+
+
+    (0, _reactDom.flushSync)(() => {
+      setState(prevState => {
+        return updateState(prevState, newState);
+      });
+    });
+  };
+
   React.useEffect(() => {
     const handleResize = (0, _utils.unstable_debounce)(() => {
-      renders.current = 0;
-      syncHeight();
+      renders.current = 0; // If the TextareaAutosize component is replaced by Suspense with a fallback, the last
+      // ResizeObserver's handler that runs because of the change in the layout is trying to
+      // access a dom node that is no longer there (as the fallback component is being shown instead).
+      // See https://github.com/mui/material-ui/issues/32640
+      // TODO: Add tests that will ensure the component is not failing when
+      // replaced by Suspense with a fallback, once React is updated to version 18
+
+      if (inputRef.current) {
+        syncHeightWithFlushSycn();
+      }
     });
     const containerWindow = (0, _utils.unstable_ownerWindow)(inputRef.current);
     containerWindow.addEventListener('resize', handleResize);
@@ -146,7 +200,7 @@ const TextareaAutosize = /*#__PURE__*/React.forwardRef(function TextareaAutosize
         resizeObserver.disconnect();
       }
     };
-  }, [syncHeight]);
+  });
   (0, _utils.unstable_useEnhancedEffect)(() => {
     syncHeight();
   });

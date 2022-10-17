@@ -1,28 +1,14 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import { CreateCssVarsProviderResult } from '@mui/system';
-import { ThemeOptions, SupportedColorScheme } from './experimental_extendTheme';
-import { PaletteWithChannels } from './createPalette';
-
-export interface ThemeInput extends Omit<ThemeOptions, 'colorSchemes'> {
-  colorSchemes: Partial<
-    Record<
-      SupportedColorScheme,
-      {
-        palette: PaletteWithChannels;
-      }
-    >
-  >;
-}
-
-type MDCreateCssVarsProviderResult = CreateCssVarsProviderResult<SupportedColorScheme, ThemeInput>;
-
-declare const useColorScheme: MDCreateCssVarsProviderResult['useColorScheme'];
-declare const getInitColorSchemeScript: MDCreateCssVarsProviderResult['getInitColorSchemeScript'];
-
-/**
- * This component is an experimental Theme Provider that generates CSS variabels out of the theme tokens.
- * It should preferably be used at **the root of your component tree**.
- */
-declare const Experimental_CssVarsProvider: MDCreateCssVarsProviderResult['CssVarsProvider'];
-
-export { useColorScheme, getInitColorSchemeScript, Experimental_CssVarsProvider };
+/// <reference types="react" />
+import { SupportedColorScheme } from './experimental_extendTheme';
+declare const shouldSkipGeneratingVar: (keys: string[]) => boolean;
+declare const CssVarsProvider: (props: import("react").PropsWithChildren<Partial<import("@mui/system").CssVarsProviderConfig<SupportedColorScheme>> & {
+    theme?: {
+        cssVarPrefix?: string | undefined;
+        colorSchemes: Record<SupportedColorScheme, Record<string, any>>;
+    } | undefined;
+    documentNode?: Document | null | undefined;
+    colorSchemeNode?: Document | HTMLElement | null | undefined;
+    colorSchemeSelector?: string | undefined;
+    storageWindow?: Window | null | undefined;
+}>) => import("react").ReactElement<any, string | import("react").JSXElementConstructor<any>>, useColorScheme: () => import("@mui/system").ColorSchemeContextValue<SupportedColorScheme>, getInitColorSchemeScript: typeof import("@mui/system").getInitColorSchemeScript;
+export { useColorScheme, getInitColorSchemeScript, shouldSkipGeneratingVar, CssVarsProvider as Experimental_CssVarsProvider, };

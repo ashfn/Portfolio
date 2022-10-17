@@ -13,7 +13,7 @@ var _display = _interopRequireDefault(require("./display"));
 
 var _flexbox = _interopRequireDefault(require("./flexbox"));
 
-var _grid = _interopRequireDefault(require("./grid"));
+var _cssGrid = _interopRequireDefault(require("./cssGrid"));
 
 var _positions = _interopRequireDefault(require("./positions"));
 
@@ -31,7 +31,7 @@ const filterPropsMapping = {
   borders: _borders.default.filterProps,
   display: _display.default.filterProps,
   flexbox: _flexbox.default.filterProps,
-  grid: _grid.default.filterProps,
+  grid: _cssGrid.default.filterProps,
   positions: _positions.default.filterProps,
   palette: _palette.default.filterProps,
   shadows: _shadows.default.filterProps,
@@ -43,7 +43,7 @@ const styleFunctionMapping = {
   borders: _borders.default,
   display: _display.default,
   flexbox: _flexbox.default,
-  grid: _grid.default,
+  grid: _cssGrid.default,
   positions: _positions.default,
   palette: _palette.default,
   shadows: _shadows.default,

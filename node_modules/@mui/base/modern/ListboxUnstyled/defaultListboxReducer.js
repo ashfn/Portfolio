@@ -76,7 +76,7 @@ function handleOptionSelection(option, state, props) {
   const {
     selectedValue
   } = state;
-  const optionIndex = props.options.indexOf(option);
+  const optionIndex = props.options.findIndex(o => props.optionComparer(option, o));
 
   if (isOptionDisabled(option, optionIndex)) {
     return state;

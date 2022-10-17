@@ -155,7 +155,15 @@ export default function useListbox(props) {
         return;
       }
 
-      var keysToPreventDefault = [' ', 'Enter', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'];
+      var keysToPreventDefault = ['ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'];
+
+      if (focusManagement === 'activeDescendant') {
+        // When the child element is focused using the activeDescendant attribute,
+        // the listbox handles keyboard events on its behalf.
+        // We have to `preventDefault()` is this case to prevent the browser from
+        // scrolling the view when space is pressed or submitting forms when enter is pressed.
+        keysToPreventDefault.push(' ', 'Enter');
+      }
 
       if (keysToPreventDefault.includes(event.key)) {
         event.preventDefault();
@@ -167,7 +175,7 @@ export default function useListbox(props) {
         props: propsWithDefaults
       }); // Handle text navigation
 
-      if (event.key.length === 1) {
+      if (event.key.length === 1 && event.key !== ' ') {
         var textCriteria = textCriteriaRef.current;
         var lowerKey = event.key.toLowerCase();
         var currentTime = performance.now();

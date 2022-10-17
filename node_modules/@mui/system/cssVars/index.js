@@ -11,5 +11,13 @@ Object.defineProperty(exports, "default", {
     return _createCssVarsProvider.default;
   }
 });
+Object.defineProperty(exports, "getInitColorSchemeScript", {
+  enumerable: true,
+  get: function () {
+    return _getInitColorSchemeScript.default;
+  }
+});
 
 var _createCssVarsProvider = _interopRequireDefault(require("./createCssVarsProvider"));
+
+var _getInitColorSchemeScript = _interopRequireDefault(require("./getInitColorSchemeScript"));

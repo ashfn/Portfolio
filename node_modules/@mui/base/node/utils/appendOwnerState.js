@@ -14,16 +14,16 @@ var _isHostComponent = _interopRequireDefault(require("./isHostComponent"));
 /**
  * Appends the ownerState object to the props, merging with the existing one if necessary.
  *
- * @param elementType Type of the element that owns the `existingProps`. If the element is a DOM node, `ownerState` are not applied.
- * @param existingProps Props of the element.
+ * @param elementType Type of the element that owns the `existingProps`. If the element is a DOM node, `ownerState` is not applied.
+ * @param otherProps Props of the element.
  * @param ownerState
  */
-function appendOwnerState(elementType, existingProps = {}, ownerState) {
+function appendOwnerState(elementType, otherProps = {}, ownerState) {
   if ((0, _isHostComponent.default)(elementType)) {
-    return existingProps;
+    return otherProps;
   }
 
-  return (0, _extends2.default)({}, existingProps, {
-    ownerState: (0, _extends2.default)({}, existingProps.ownerState, ownerState)
+  return (0, _extends2.default)({}, otherProps, {
+    ownerState: (0, _extends2.default)({}, otherProps.ownerState, ownerState)
   });
 }

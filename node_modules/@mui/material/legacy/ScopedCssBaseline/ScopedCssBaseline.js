@@ -94,6 +94,11 @@ process.env.NODE_ENV !== "production" ? ScopedCssBaseline.propTypes
    * For more details, check out https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
    * For browser support, check out https://caniuse.com/?search=color-scheme
    */
-  enableColorScheme: PropTypes.bool
+  enableColorScheme: PropTypes.bool,
+
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
 } : void 0;
 export default ScopedCssBaseline;

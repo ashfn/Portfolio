@@ -1,12 +1,15 @@
 import _extends from "@babel/runtime/helpers/esm/extends";
 import _objectWithoutPropertiesLoose from "@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
-const _excluded = ["anchorEl", "children", "direction", "disablePortal", "modifiers", "open", "ownerState", "placement", "popperOptions", "popperRef", "TransitionProps"],
+const _excluded = ["anchorEl", "children", "component", "components", "componentsProps", "direction", "disablePortal", "modifiers", "open", "ownerState", "placement", "popperOptions", "popperRef", "TransitionProps"],
       _excluded2 = ["anchorEl", "children", "container", "direction", "disablePortal", "keepMounted", "modifiers", "open", "placement", "popperOptions", "popperRef", "style", "transition"];
+import * as React from 'react';
 import { chainPropTypes, HTMLElementType, refType, unstable_ownerDocument as ownerDocument, unstable_useEnhancedEffect as useEnhancedEffect, unstable_useForkRef as useForkRef } from '@mui/utils';
 import { createPopper } from '@popperjs/core';
 import PropTypes from 'prop-types';
-import * as React from 'react';
+import composeClasses from '../composeClasses';
 import Portal from '../Portal';
+import { getPopperUnstyledUtilityClass } from './popperUnstyledClasses';
+import { useSlotProps } from '../utils';
 import { jsx as _jsx } from "react/jsx-runtime";
 
 function flipPlacement(placement, direction) {
@@ -36,17 +39,30 @@ function resolveAnchorEl(anchorEl) {
   return typeof anchorEl === 'function' ? anchorEl() : anchorEl;
 }
 
+const useUtilityClasses = () => {
+  const slots = {
+    root: ['root']
+  };
+  return composeClasses(slots, getPopperUnstyledUtilityClass, {});
+};
+
 const defaultPopperOptions = {};
 /* eslint-disable react/prop-types */
 
 const PopperTooltip = /*#__PURE__*/React.forwardRef(function PopperTooltip(props, ref) {
+  var _ref;
+
   const {
     anchorEl,
     children,
+    component,
+    components = {},
+    componentsProps = {},
     direction,
     disablePortal,
     modifiers,
     open,
+    ownerState,
     placement: initialPlacement,
     popperOptions,
     popperRef: popperRefProp,
@@ -144,10 +160,20 @@ const PopperTooltip = /*#__PURE__*/React.forwardRef(function PopperTooltip(props
     childProps.TransitionProps = TransitionProps;
   }
 
-  return /*#__PURE__*/_jsx("div", _extends({
-    ref: ownRef,
-    role: "tooltip"
-  }, other, {
+  const classes = useUtilityClasses();
+  const Root = (_ref = component != null ? component : components.Root) != null ? _ref : 'div';
+  const rootProps = useSlotProps({
+    elementType: Root,
+    externalSlotProps: componentsProps.root,
+    externalForwardedProps: other,
+    additionalProps: {
+      role: 'tooltip',
+      ref: ownRef
+    },
+    ownerState: _extends({}, props, ownerState),
+    className: classes.root
+  });
+  return /*#__PURE__*/_jsx(Root, _extends({}, rootProps, {
     children: typeof children === 'function' ? children(childProps) : children
   }));
 });
@@ -262,6 +288,23 @@ process.env.NODE_ENV !== "production" ? PopperUnstyled.propTypes
   children: PropTypes
   /* @typescript-to-proptypes-ignore */
   .oneOfType([PropTypes.node, PropTypes.func]),
+
+  /**
+   * The components used for each slot inside the Popper.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  components: PropTypes.shape({
+    Root: PropTypes.elementType
+  }),
+
+  /**
+   * The props used for each slot inside the Popper.
+   * @default {}
+   */
+  componentsProps: PropTypes.shape({
+    root: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+  }),
 
   /**
    * An HTML element or function that returns one.

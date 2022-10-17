@@ -11,19 +11,25 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
+var React = _interopRequireWildcard(require("react"));
+
 var _utils = require("@mui/utils");
 
 var _core = require("@popperjs/core");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var React = _interopRequireWildcard(require("react"));
+var _composeClasses = _interopRequireDefault(require("../composeClasses"));
 
 var _Portal = _interopRequireDefault(require("../Portal"));
 
+var _popperUnstyledClasses = require("./popperUnstyledClasses");
+
+var _utils2 = require("../utils");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-const _excluded = ["anchorEl", "children", "direction", "disablePortal", "modifiers", "open", "ownerState", "placement", "popperOptions", "popperRef", "TransitionProps"],
+const _excluded = ["anchorEl", "children", "component", "components", "componentsProps", "direction", "disablePortal", "modifiers", "open", "ownerState", "placement", "popperOptions", "popperRef", "TransitionProps"],
       _excluded2 = ["anchorEl", "children", "container", "direction", "disablePortal", "keepMounted", "modifiers", "open", "placement", "popperOptions", "popperRef", "style", "transition"];
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -57,17 +63,30 @@ function resolveAnchorEl(anchorEl) {
   return typeof anchorEl === 'function' ? anchorEl() : anchorEl;
 }
 
+const useUtilityClasses = () => {
+  const slots = {
+    root: ['root']
+  };
+  return (0, _composeClasses.default)(slots, _popperUnstyledClasses.getPopperUnstyledUtilityClass, {});
+};
+
 const defaultPopperOptions = {};
 /* eslint-disable react/prop-types */
 
 const PopperTooltip = /*#__PURE__*/React.forwardRef(function PopperTooltip(props, ref) {
+  var _ref;
+
   const {
     anchorEl,
     children,
+    component,
+    components = {},
+    componentsProps = {},
     direction,
     disablePortal,
     modifiers,
     open,
+    ownerState,
     placement: initialPlacement,
     popperOptions,
     popperRef: popperRefProp,
@@ -164,10 +183,20 @@ const PopperTooltip = /*#__PURE__*/React.forwardRef(function PopperTooltip(props
     childProps.TransitionProps = TransitionProps;
   }
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2.default)({
-    ref: ownRef,
-    role: "tooltip"
-  }, other, {
+  const classes = useUtilityClasses();
+  const Root = (_ref = component != null ? component : components.Root) != null ? _ref : 'div';
+  const rootProps = (0, _utils2.useSlotProps)({
+    elementType: Root,
+    externalSlotProps: componentsProps.root,
+    externalForwardedProps: other,
+    additionalProps: {
+      role: 'tooltip',
+      ref: ownRef
+    },
+    ownerState: (0, _extends2.default)({}, props, ownerState),
+    className: classes.root
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Root, (0, _extends2.default)({}, rootProps, {
     children: typeof children === 'function' ? children(childProps) : children
   }));
 });
@@ -281,6 +310,23 @@ process.env.NODE_ENV !== "production" ? PopperUnstyled.propTypes
   children: _propTypes.default
   /* @typescript-to-proptypes-ignore */
   .oneOfType([_propTypes.default.node, _propTypes.default.func]),
+
+  /**
+   * The components used for each slot inside the Popper.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  components: _propTypes.default.shape({
+    Root: _propTypes.default.elementType
+  }),
+
+  /**
+   * The props used for each slot inside the Popper.
+   * @default {}
+   */
+  componentsProps: _propTypes.default.shape({
+    root: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.object])
+  }),
 
   /**
    * An HTML element or function that returns one.

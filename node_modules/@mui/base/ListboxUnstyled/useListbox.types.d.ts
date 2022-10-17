@@ -1,6 +1,6 @@
 import * as React from 'react';
 declare type UseListboxStrictPropsRequiredKeys = 'isOptionDisabled' | 'disableListWrap' | 'disabledItemsFocusable' | 'optionComparer' | 'optionStringifier' | 'multiple';
-export declare type UseListboxStrictProps<TOption> = Omit<UseListboxParameters<TOption>, UseListboxStrictPropsRequiredKeys> & Required<Pick<UseListboxParameters<TOption>, UseListboxStrictPropsRequiredKeys>>;
+export declare type UseListboxPropsWithDefaults<TOption> = Omit<UseListboxParameters<TOption>, UseListboxStrictPropsRequiredKeys> & Required<Pick<UseListboxParameters<TOption>, UseListboxStrictPropsRequiredKeys>>;
 export declare type FocusManagementType = 'DOM' | 'activeDescendant';
 declare enum ActionTypes {
     blur = "blur",
@@ -18,28 +18,28 @@ interface OptionClickAction<TOption> {
     type: ActionTypes.optionClick;
     option: TOption;
     event: React.MouseEvent;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface OptionHoverAction<TOption> {
     type: ActionTypes.optionHover;
     option: TOption;
     event: React.MouseEvent;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface FocusAction<TOption> {
     type: ActionTypes.focus;
     event: React.FocusEvent;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface BlurAction<TOption> {
     type: ActionTypes.blur;
     event: React.FocusEvent;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface KeyDownAction<TOption> {
     type: ActionTypes.keyDown;
     event: React.KeyboardEvent;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface SetValueAction<TOption> {
     type: ActionTypes.setValue;
@@ -52,13 +52,13 @@ interface SetHighlightAction<TOption> {
 interface TextNavigationAction<TOption> {
     type: ActionTypes.textNavigation;
     searchString: string;
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 interface OptionsChangeAction<TOption> {
     type: ActionTypes.optionsChange;
     options: TOption[];
     previousOptions: TOption[];
-    props: UseListboxStrictProps<TOption>;
+    props: UseListboxPropsWithDefaults<TOption>;
 }
 export declare type ListboxAction<TOption> = OptionClickAction<TOption> | OptionHoverAction<TOption> | FocusAction<TOption> | BlurAction<TOption> | KeyDownAction<TOption> | SetHighlightAction<TOption> | TextNavigationAction<TOption> | SetValueAction<TOption> | OptionsChangeAction<TOption>;
 export interface ListboxState<TOption> {
@@ -172,7 +172,7 @@ interface UseListboxRootSlotOwnProps {
     tabIndex: number;
     ref: React.Ref<any>;
 }
-export declare type UseListboxRootSlotProps<TOther = {}> = Omit<TOther, keyof UseListboxRootSlotOwnProps> & UseListboxRootSlotOwnProps;
+export declare type UseListboxRootSlotProps<TOther = {}> = TOther & UseListboxRootSlotOwnProps;
 interface UseListboxOptionSlotOwnProps {
     'aria-disabled': React.AriaAttributes['aria-disabled'];
     'aria-selected': React.AriaAttributes['aria-selected'];

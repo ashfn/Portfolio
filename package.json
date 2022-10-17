@@ -14,6 +14,7 @@
     "@mui/material": "^5.10.5",
     "daisyui": "^2.29.0",
     "next": "12.2.5",
+    "outstatic": "^0.0.27-rc",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",

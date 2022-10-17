@@ -87,7 +87,9 @@ function handleOptionSelection(option, state, props) {
     return false;
   } : _props$isOptionDisabl;
   var selectedValue = state.selectedValue;
-  var optionIndex = props.options.indexOf(option);
+  var optionIndex = props.options.findIndex(function (o) {
+    return props.optionComparer(option, o);
+  });
 
   if (isOptionDisabled(option, optionIndex)) {
     return state;

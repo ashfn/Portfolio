@@ -34,9 +34,8 @@ var ImageListItemRoot = styled('li', {
 })(function (_ref2) {
   var ownerState = _ref2.ownerState;
   return _extends({
-    display: 'inline-block',
-    position: 'relative',
-    lineHeight: 0
+    display: 'block',
+    position: 'relative'
   }, ownerState.variant === 'standard' && {
     // For titlebar under list item
     display: 'flex',
@@ -50,7 +49,8 @@ var ImageListItemRoot = styled('li', {
   }, _defineProperty({}, "& .".concat(imageListItemClasses.img), _extends({
     objectFit: 'cover',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    display: 'block'
   }, ownerState.variant === 'standard' && {
     height: 'auto',
     flexGrow: 1

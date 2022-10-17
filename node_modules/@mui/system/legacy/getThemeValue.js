@@ -2,7 +2,7 @@ import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import borders from './borders';
 import display from './display';
 import flexbox from './flexbox';
-import grid from './grid';
+import grid from './cssGrid';
 import positions from './positions';
 import palette from './palette';
 import shadows from './shadows';
