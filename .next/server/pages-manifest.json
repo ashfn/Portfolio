@@ -2,6 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/outstatic/[[...ost]]": "pages/outstatic/[[...ost]].js",
-  "/api/outstatic/[[...ost]]": "pages/api/outstatic/[[...ost]].js"
+  "/api/outstatic/[[...ost]]": "pages/api/outstatic/[[...ost]].js",
+  "/outstatic/[[...ost]]": "pages/outstatic/[[...ost]].js"
 }

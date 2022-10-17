@@ -3,11 +3,13 @@ import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 
 import {DiJava, DiPython, DiMongodb} from 'react-icons/di'
-
+import { getDocuments } from 'outstatic/server'
 import Project from '../components/Project'
 
-export default function Home({projects}) {
+export default function Home({projects, allPosts}) {
   
+  console.log(allPosts)
+
   return (
     <div>
       <Layout/>
@@ -69,11 +71,21 @@ export async function getStaticProps(context) {
 
     var p = await fetch('https://raw.githubusercontent.com/Authorises/data/main/projects');
     const projects = await p.json()
-    
+    const allPosts = getDocuments('projects', [
+      'title',
+      'publishedAt',
+      'slug',
+      'coverImage',
+      'description',
+      'author',
+      'tags'
+    ])
+
       return {
-        revalidate: 300,
+        //revalidate: 300,
         props: {
-          projects
+          projects,
+          allPosts
         },
       }
 }
