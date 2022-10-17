@@ -77,8 +77,7 @@ export async function getStaticProps(context) {
       'slug',
       'coverImage',
       'description',
-      'author',
-      'tags'
+      'author'
     ])
 
       return {
