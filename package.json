@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.10.5",
     "daisyui": "^2.29.0",
-    "fs": "^0.0.1-security",
+    "fs": "^0.0.2",
     "next": "12.2.5",
     "outstatic": "^0.0.27-rc",
     "react": "18.2.0",
