@@ -30,6 +30,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/blog.js"
     ],
+    "/outstatic/[[...ost]]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/outstatic/[[...ost]].js"
+    ],
     "/post/[slug]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
