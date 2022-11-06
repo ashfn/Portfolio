@@ -48,7 +48,7 @@ export default function Home({allPosts}) {
 
 export async function getStaticProps(context) {
 
-    const allPosts = getDocuments('Posts', [
+    const allPosts = getDocuments('posts', [
         'title',
         'publishedAt',
         'slug',
