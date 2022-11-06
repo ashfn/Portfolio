@@ -10,7 +10,8 @@ import {MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight} from 'react-ico
 import { IconContext } from 'react-icons'
 import { serialize } from 'next-mdx-remote/serialize';
 import ReactMarkdown from 'react-markdown'
-
+import remarkGfm from 'remark-gfm'
+import remarkGemoji from 'remark-gemoji'
 const components = { Project };
 export default function Home({post}) {
   return (
@@ -20,8 +21,8 @@ export default function Home({post}) {
         <div className="text-gray-300 text-center font-bold font-roboto">
           <span className="text-2xl text-sky-400">{post.title}</span>
         </div>
-        <div className="lg:ml-40 lg:mr-40 md:ml-20 md:mr-20 ml-10 mr-10  text-gray-300">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+        <div className="lg:ml-60 lg:mr-60 md:ml-20 md:mr-20 ml-10 mr-10  text-gray-300 pb-20">
+          <ReactMarkdown children={post.content} remarkPlugins={[remarkGfm,remarkGemoji]}/>
         </div>
       </div>
     </div>
