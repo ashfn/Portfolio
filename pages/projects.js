@@ -72,7 +72,7 @@ export async function getStaticProps(context) {
     var p = await fetch('https://raw.githubusercontent.com/Authorises/data/main/projects');
     const projects = await p.json()
       return {
-        //revalidate: 300,
+        revalidate: 300,
         props: {
             projects
         },
