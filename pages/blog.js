@@ -1,15 +1,7 @@
 import Layout from '../components/Layout'
-import Footer from '../components/Footer'
 import { getDocuments } from 'outstatic/server'
 
 import Link from 'next/link'
-import Project from '../components/Project'
-import { useState } from 'react'; 
-
-import {MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight} from 'react-icons/md'
-import { IconContext } from 'react-icons'
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote';
 
 export default function Home({allPosts}) {
   console.log(allPosts)

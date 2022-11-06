@@ -1,6 +1,4 @@
   import Layout from '../components/Layout'
-  import Footer from '../components/Footer'
-  import { getDocuments } from 'outstatic/server'
 
   import Link from 'next/link'
 

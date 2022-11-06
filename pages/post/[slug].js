@@ -1,14 +1,7 @@
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
-import { getDocuments, getDocumentPaths, getDocumentBySlug } from 'outstatic/server'
+import { getDocumentPaths, getDocumentBySlug } from 'outstatic/server'
 
-import Link from 'next/link'
 import Project from '../../components/Project'
-import { useState } from 'react'; 
-
-import {MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight} from 'react-icons/md'
-import { IconContext } from 'react-icons'
-import { serialize } from 'next-mdx-remote/serialize';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkGemoji from 'remark-gemoji'
