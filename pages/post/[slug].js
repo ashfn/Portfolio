@@ -1,0 +1,54 @@
+import Layout from '../../components/Layout'
+import Footer from '../../components/Footer'
+import { getDocuments, getDocumentPaths, getDocumentBySlug } from 'outstatic/server'
+
+import Link from 'next/link'
+import Project from '../../components/Project'
+import { useState } from 'react'; 
+
+import {MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight} from 'react-icons/md'
+import { IconContext } from 'react-icons'
+import { serialize } from 'next-mdx-remote/serialize';
+import ReactMarkdown from 'react-markdown'
+
+const components = { Project };
+export default function Home({post}) {
+  return (
+    <div className=" h-screen">
+      <Layout back="/blog"/>
+      <div className="">
+        <div className="text-gray-300 text-center font-bold font-roboto">
+          <span className="text-2xl text-sky-400">{post.title}</span>
+        </div>
+        <div className="lg:ml-40 lg:mr-40 md:ml-20 md:mr-20 ml-10 mr-10  text-gray-300">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export async function getStaticProps({ params }) {
+    const post = getDocumentBySlug('posts', params.slug, [
+      'title',
+      'publishedAt',
+      'slug',
+      'author',
+      'content',
+      'coverImage'
+    ])
+    return {
+      props: {
+        post: {
+          ...post
+        }
+      }
+    }
+  }
+
+  export async function getStaticPaths() {
+    return {
+      paths: getDocumentPaths('posts'),
+      fallback: false
+    }
+  }

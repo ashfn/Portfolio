@@ -1,21 +1,29 @@
-import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
-import {FaGithub} from 'react-icons/fa'
-import {ImHome} from 'react-icons/im'
+import {MdOutlineKeyboardBackspace} from 'react-icons/md'
+import {FiGithub} from 'react-icons/fi'
 
-function openGithub(){
-    window.open("https://github.com/Authorises", '_blank');
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (newWindow) newWindow.opener = null
 }
 
-const Nav = () => {
+const Nav = ({back}) => {
   return (
-    <div className="p-4 grid justify-items-center">
-        <div className="btn-group">
-            <button aria-label="Home" className="btn btn-primary text-base-200 shadow-md shadow-base-100/75"><ImHome size={32}/></button>
-            <button aria-label="Github" onClick={openGithub} className="btn btn-secondary text-base-200 shadow-md shadow-base-100/75"><FaGithub size={32}/></button>
+    <div className="pt-8 pl-8 pr-8 flex flex-grid">
+      <div className="basis-1/2 text-left">
+        {back!="none" &&
+          <Link href={back}>
+            <div className="text-sky-400 hover:text-sky-500 hover:drop-shadow-2xl cursor-pointer"><MdOutlineKeyboardBackspace size={32}/></div>
+          </Link>
+        }
+
+      </div>
+      <div className="basis-1/2 text-right">
+        <div className="">
+          <FiGithub onClick={() => openInNewTab('https://github.com/Authorises')} className="text-right inline hover:text-sky-500 text-sky-400 cursor-pointer" size={32}/>
         </div>
+      </div>
     </div>
   )
 }

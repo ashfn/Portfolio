@@ -12,3 +12,13 @@
 	99%{	color:transparent;	}
 	100%{	color: #000;	}
 }
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+body{
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+	background-color: #0f172a;
+}
