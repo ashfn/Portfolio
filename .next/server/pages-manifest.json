@@ -1,7 +1,13 @@
 {
   "/_app": "pages/_app.js",
+  "/api/outstatic/[[...ost]]": "pages/api/outstatic/[[...ost]].js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
   "/outstatic/[[...ost]]": "pages/outstatic/[[...ost]].js",
-  "/api/outstatic/[[...ost]]": "pages/api/outstatic/[[...ost]].js"
+  "/projects": "pages/projects.js",
+  "/blog": "pages/blog.js",
+  "/post/[slug]": "pages/post/[slug].js",
+  "/_document": "pages/_document.js",
+  "/en/404": "pages/en/404.html",
+  "/en/500": "pages/en/500.html",
+  "/en": "pages/en.html"
 }

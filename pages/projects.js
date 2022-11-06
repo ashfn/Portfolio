@@ -71,14 +71,6 @@ export async function getStaticProps(context) {
 
     var p = await fetch('https://raw.githubusercontent.com/Authorises/data/main/projects');
     const projects = await p.json()
-    const allPosts = getDocuments('projects', [
-      'title',
-      'publishedAt',
-      'slug',
-      'coverImage',
-      'description',
-      'author'
-    ])
       return {
         //revalidate: 300,
         props: {
