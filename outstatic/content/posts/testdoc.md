@@ -1,6 +1,6 @@
 ---
 title: 'testdoc'
-status: 'draft'
+status: 'published'
 author:
   name: 'auth'
   picture: 'https://avatars.githubusercontent.com/u/65650599?v=4'
