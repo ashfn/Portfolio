@@ -20,7 +20,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-    "react-markdown": "^8.0.3",
+    "react-markdown": "^8.0.4",
     "remark-gemoji": "^7.0.1",
     "remark-gfm": "^3.0.1",
     "remark-twemoji": "^0.1.1",
