@@ -1,5 +1,12 @@
 export var IconsManifest = [
   {
+    "id": "ci",
+    "name": "Circum Icons",
+    "projectUrl": "https://circumicons.com/",
+    "license": "MPL-2.0 license",
+    "licenseUrl": "https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE"
+  },
+  {
     "id": "fa",
     "name": "Font Awesome",
     "projectUrl": "https://fontawesome.com/",
@@ -112,6 +119,13 @@ export var IconsManifest = [
     "licenseUrl": "https://opensource.org/licenses/MIT"
   },
   {
+    "id": "hi2",
+    "name": "Heroicons 2",
+    "projectUrl": "https://github.com/tailwindlabs/heroicons",
+    "license": "MIT",
+    "licenseUrl": "https://opensource.org/licenses/MIT"
+  },
+  {
     "id": "si",
     "name": "Simple Icons",
     "projectUrl": "https://simpleicons.org/",
@@ -119,16 +133,25 @@ export var IconsManifest = [
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
   },
   {
+    "id": "sl",
+    "name": "Simple Line Icons",
+    "projectUrl": "https://thesabbir.github.io/simple-line-icons/",
+    "license": "MIT",
+    "licenseUrl": "https://opensource.org/licenses/MIT"
+  },
+  {
     "id": "im",
     "name": "IcoMoon Free",
     "projectUrl": "https://github.com/Keyamoon/IcoMoon-Free",
-    "license": "CC BY 4.0 License"
+    "license": "CC BY 4.0 License",
+    "licenseUrl": "https://github.com/Keyamoon/IcoMoon-Free/blob/master/License.txt"
   },
   {
     "id": "bi",
     "name": "BoxIcons",
     "projectUrl": "https://github.com/atisawd/boxicons",
-    "license": "CC BY 4.0 License"
+    "license": "CC BY 4.0 License",
+    "licenseUrl": "https://github.com/atisawd/boxicons/blob/master/LICENSE"
   },
   {
     "id": "cg",
@@ -150,5 +173,19 @@ export var IconsManifest = [
     "projectUrl": "https://github.com/tabler/tabler-icons",
     "license": "MIT",
     "licenseUrl": "https://opensource.org/licenses/MIT"
+  },
+  {
+    "id": "tfi",
+    "name": "Themify Icons",
+    "projectUrl": "https://github.com/lykmapipo/themify-icons",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/thecreation/standard-icons/blob/master/modules/themify-icons/LICENSE"
+  },
+  {
+    "id": "rx",
+    "name": "Radix Icons",
+    "projectUrl": "https://icons.radix-ui.com",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/radix-ui/icons/blob/master/LICENSE"
   }
 ]
