@@ -4,8 +4,8 @@ status: 'published'
 author:
   name: 'auth'
   picture: 'https://avatars.githubusercontent.com/u/65650599?v=4'
-slug: 'test'
-description: 'A test blog post'
+slug: 'outstatic'
+description: 'Using a static CMS - pros and cons?'
 coverImage: ''
 publishedAt: '2022-11-06T20:09:49.242Z'
 ---
@@ -17,8 +17,4 @@ I recently found an awesome tool called Outstatic, it is a easy to use, static C
 It allows me to easily edit my posts through an intuitive interface, where I can add images, code blocks cover images and everything I would ever need for a simple blog site like this.
 
 You can check out the Outstatic Github repository [here](https://github.com/avitorio/outstatic).
-
-
-
-
 
