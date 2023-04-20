@@ -18,7 +18,7 @@
     "daisyui": "^2.50.0",
     "fs": "^0.0.2",
     "next": "^13.1.6",
-    "next-mdx-remote": "^4.2.1",
+    "next-mdx-remote": "^4.4.1",
     "outstatic": "^0.0.33-rc",
     "react": "18.2.0",
     "react-dom": "18.2.0",
